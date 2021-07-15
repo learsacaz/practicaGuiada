@@ -1,0 +1,45 @@
+<table class="table table-stripped" *ngIf="cantCursos(); else nada">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Duración</th>
+            <th scope="col">Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of cursos; index as i">
+            <th scope="row">{{i + 1}}</th>
+            <td>{{x.nombre}} </td>
+            <td>{{x.descripcion}} </td>
+            <td>{{x.duracion}} </td>
+            <td>{{x.costo}} </td>
+            <td><button class="btn btn-danger" (click)="borrarCurso(x)">Borrar</button></td>
+            <td><button class="btn btn-primary" (click)="selectCurso(x)">Seleccionar</button></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+<ng-template #nada><p>No hay Clases disponibles</p></ng-template>
+<div class="row">
+    <form>
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input name="nombre" class="form-control" [(ngModel)]="curso.nombre">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input name="descripcion" class="form-control" [(ngModel)]="curso.descripcion">
+        </div>
+        <div class="form-group">
+            <label for="duracion">Duración</label>
+            <input name="duracion" class="form-control" [(ngModel)]="curso.duracion">
+        </div>
+        <div class="form-group">
+            <label for="costo">Costo</label>
+            <input name="costo" class="form-control" [(ngModel)]="curso.costo">
+        </div>
+        <button class="btn btn-primary" (click)="registrarCurso()">Registrar</button>
+    </form>
+</div>
